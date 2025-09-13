@@ -27,7 +27,6 @@ function uid() {
 export function JobsProvider({ children }) {
   const [jobs, dispatch] = useReducer(jobsReducer, []);
 
-  // ✅ Load once on mount
   useEffect(() => {
     const raw = localStorage.getItem("job-tracker-jobs");
     if (raw) {
@@ -40,7 +39,7 @@ export function JobsProvider({ children }) {
     }
   }, []);
 
-  // ✅ Save whenever jobs changes
+ 
   useEffect(() => {
     if (jobs.length > 0) {
       localStorage.setItem("job-tracker-jobs", JSON.stringify(jobs));
